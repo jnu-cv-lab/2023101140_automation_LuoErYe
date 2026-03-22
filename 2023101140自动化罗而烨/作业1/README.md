@@ -3,7 +3,7 @@
 ## 1. 实验环境
 - 操作系统: Windows 11 + WSL (Ubuntu 22.04)
 - 开发工具: VS Code
-- Python 环境: 虚拟环境 (.venv-basic)
+- Python 环境: 虚拟环境 (.venv-dl)
 - 核心库: OpenCV, NumPy, Matplotlib
 
 ## 2. 项目结构说明
