@@ -1,0 +1,37 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "cppbuild",
+            "label": "C/C++: g++ 生成活动文件",
+            "command": "/usr/bin/g++",
+            "args": [
+                "-fdiagnostics-color=always",
+                "-g",
+                // 直接指向你的 main.cpp 绝对路径
+                "/home/albert/cv-course/myproj/zuoye2/src/main.cpp",
+                "-o",
+                // 输出到对应的 build 文件夹
+                "/home/albert/cv-course/myproj/zuoye2/build/main_exec",
+                // OpenCV 配置
+                "-I", "/usr/include/opencv4",
+                "-l", "opencv_core",
+                "-l", "opencv_imgcodecs",
+                "-l", "opencv_highgui",
+                "-l", "opencv_imgproc"
+            ],
+            "options": {
+                // 工作目录设为项目根目录
+                "cwd": "/home/albert/cv-course/myproj/zuoye2"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "detail": "编译器: /usr/bin/g++"
+        }
+    ]
+}
