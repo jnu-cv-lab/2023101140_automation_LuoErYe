@@ -1,5 +1,6 @@
 {
     "python.defaultInterpreterPath": "/home/albert/cv-course/.venv-dl/bin/python",
     "python.terminal.activateEnvInCurrentTerminal": true,
-    "python.analysis.extraPaths": ["./src"]
-}
+    "python.analysis.extraPaths": ["./src"],
+    "editor.tabSize":2
+} 
