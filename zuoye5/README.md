@@ -62,12 +62,12 @@
 ## 5. 运行说明
 
 1. **运行几何变换测试**：
-   执行 `python script1.py`。程序会自动读取 `test_image.png`，进行计算，并生成 `composite_result.png` 以及弹出 `Matplotlib` 对比图。
+   执行 `image_wrap.py`。程序会自动读取 `test_image.png`，进行计算，并生成 `composite_result.png` 以及弹出 `Matplotlib` 对比图。
 2. **运行A4纸透视校正**：
-   执行 `python script2.py`。
+   执行 `A4trans.py`。
    * 终端会提示“请按照严格顺序点击四个角”。
    * 在弹出的图片窗口中，**依次点击左上、右上、左下、右下**四个角。
-   * 点击完第4个点后，程序会自动校正并保存为 `A4_corrected_result.jpg`，同时弹出校正后的预览窗口。
+   * 点击完第4个点后，程序会自动校正并保存为 `corrected_manual.jpg`，同时弹出校正后的预览窗口。
 
 ---
 
