@@ -81,6 +81,14 @@ else:
             sift_ratio = sift_inliers / sift_matches_count
             if sift_inliers > 10: sift_success = "是"
             
+            # 【新增】画出 SIFT 的 RANSAC 内点匹配图并保存
+            draw_params_sift = dict(matchColor=(0, 255, 0), # 绿色连线
+                                    singlePointColor=None,
+                                    matchesMask=mask_sift.ravel().tolist(), # 只画内点
+                                    flags=cv2.DrawMatchesFlags_NOT_DRAW_SINGLE_POINTS)
+            img_sift_matches = cv2.drawMatches(img1, kp1_sift, img2, kp2_sift, good_matches, None, **draw_params_sift)
+            cv2.imwrite('/home/albert/cv-course/myproj/zuoye6/task_elective_sift_matches.png', img_sift_matches)
+
             # 画出 SIFT 定位图并保存
             h, w = img1.shape
             pts = np.float32([[0, 0], [0, h-1], [w-1, h-1], [w-1, 0]]).reshape(-1, 1, 2)
@@ -100,9 +108,9 @@ else:
     print(f"{'ORB':<12} | {orb_matches_count:<14} | {orb_inliers:<19} | {orb_ratio:<14.4f} | {orb_success:<14} | {orb_speed_eval}")
     print(f"{'SIFT':<12} | {sift_matches_count:<14} | {sift_inliers:<19} | {sift_ratio:<14.4f} | {sift_success:<14} | {sift_speed_eval}")
     print("-" * 80)
-    print("\n注：SIFT 的定位结果图已保存为 'task_elective_sift_location.png'")
-
-
+    print("\n注：已保存以下图片：")
+    print("1. task_elective_sift_matches.png (SIFT 内点匹配图)")
+    print("2. task_elective_sift_location.png (SIFT 目标定位图)")
 
     """
     
