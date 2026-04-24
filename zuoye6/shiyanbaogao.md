@@ -16,8 +16,8 @@
 - **ORB 描述子维度**：32 字节（256 位二进制串）
 
 **可视化结果展示：**
-/home/albert/cv-course/myproj/zuoye6/task1_result/task1_box_in_scene_keypoints.png
-/home/albert/cv-course/myproj/zuoye6/task1_result/task1_box_keypoints.png
+- 见task1_resut
+
 
 ### 任务 2：ORB 特征匹配
 本任务使用 `cv2.BFMatcher(cv2.NORM_HAMMING, crossCheck=True)` 进行特征匹配。
@@ -25,25 +25,24 @@
 - **总匹配数量**：287 
 
 **匹配可视化结果展示：**
-/home/albert/cv-course/myproj/zuoye6/task2_result/task2_orb_matches_all.png
-/home/albert/cv-course/myproj/zuoye6/task2_result/task2_orb_matches_top50.png
+- 见task2_result中所示
 
 ### 任务 3：RANSAC 剔除错误匹配
 利用匹配点估计单应矩阵，并使用 `cv2.RANSAC` 方法剔除误匹配，重投影误差阈值设为 5.0。
 
 - **总匹配数量**：287
-- **RANSAC 内点数量 (Inliers)**：52 （注：请填入终端实际输出的内点数）
+- **RANSAC 内点数量 (Inliers)**：52 
 - **内点比例 (Inlier Ratio)**：0.1812
-- **Homography 矩阵**：如结果图所示
+- **Homography 矩阵**：如task3_resut中所示
 
 **RANSAC 后的匹配图展示：**
-/home/albert/cv-course/myproj/zuoye6/task3_result/task3_ransac_matches.png
+- 见task3_result中所示
 
 ### 任务 4：目标定位
 利用任务 3 估计出的单应性矩阵（Homography），通过 `cv2.perspectiveTransform()` 将 `box.png` 的四个角点投影至场景图中。
 
 **定位结果展示：**
-/home/albert/cv-course/myproj/zuoye6/task4_result/task4_target_location.png
+- 见task4_resut中所示
 
 **简要说明定位是否成功：**
 **定位成功。** 从结果图中可以看出，通过单应性矩阵投影后的四个角点在场景图中形成了一个闭合的红色四边形，且该四边形紧密、精准地贴合了场景中目标包装盒的实际物理边缘。这说明 RANSAC 成功过滤了错误匹配，计算出的透视变换矩阵是准确有效的。
@@ -54,13 +53,14 @@
 
 通过改变 ORB 的 `nfeatures` 参数（500, 1000, 2000），观察匹配效果的变化。
 
-===== 任务 6：不同 nfeatures 参数对比结果 =====
-nfeatures  | 模板图关键点     | 场景图关键点     | 匹配数量     | RANSAC内点   | 内点比例     | 成功定位
--------------------------------------------------------------------------------------
-500        | 453             | 500             | 148          | 31             | 0.2095       | 是
-1000       | 865             | 1000            | 287          | 52             | 0.1812       | 是
-2000       | 1589            | 1999            | 511          | 67             | 0.1311       | 是
--------------------------------------------------------------------------------------
+**===== 任务 6：不同 nfeatures 参数对比结果 =====**
+
+| nfeatures | 模板图关键点 | 场景图关键点 | 匹配数量 | RANSAC内点 | 内点比例 | 成功定位 |
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| **500** | 453 | 500 | 148 | 31 | 0.2095 | 是 |
+| **1000** | 865 | 1000 | 287 | 52 | 0.1812 | 是 |
+| **2000** | 1589 | 1999 | 511 | 67 | 0.1311 | 是 |
+
 
 **参数对比结果分析：**
 1. **比较不同 nfeatures 对匹配数量的影响**：
@@ -76,15 +76,15 @@ nfeatures  | 模板图关键点     | 场景图关键点     | 匹配数量     
 
 使用 `cv2.SIFT_create()` 提取浮点型描述子，并结合 `KNN matching` 与 `Lowe ratio test` 进行对比测试。
 
---------------------------------------------------------------------------------
-方法         | 匹配数量       | RANSAC内点数       | 内点比例       | 成功定位       | 运行速度主观评价
---------------------------------------------------------------------------------
-ORB          | 287            | 52                  | 0.1812         | 是              | 0.053 秒 (极快)
-SIFT         | 80             | 75                  | 0.9375         | 是              | 0.074 秒 (较慢)
---------------------------------------------------------------------------------
+**表格：ORB 与 SIFT 算法性能对比**
+
+| 方法 | 匹配数量 | RANSAC内点数 | 内点比例 | 成功定位 | 运行速度主观评价 |
+| :---: | :---: | :---: | :---: | : :---: | :---: |
+| **ORB** | 287 | 52 | 0.1812 | 是 | 0.053 秒 (极快) |
+| **SIFT** | 80 | 75 | 0.9375 | 是 | 0.074 秒 (较慢) |
 
 **选做任务可视化展示（SIFT 定位结果）：**
-/home/albert/cv-course/myproj/zuoye6/task_elective_sift_location.png
+- 见alternative_task_result中所示
 
 
 
