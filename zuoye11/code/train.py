@@ -1,5 +1,6 @@
 import os
 import math
+import random
 import torch
 import torch.nn as nn
 import torch.optim as optim
@@ -7,6 +8,20 @@ from torch.utils.data import Dataset, DataLoader
 import numpy as np
 from sklearn.preprocessing import LabelEncoder
 from sklearn.metrics import confusion_matrix, classification_report
+
+# ==========================================
+# 0. 固定所有的随机种子 (保证结果绝对一致)
+# ==========================================
+def set_seed(seed=42):
+    random.seed(seed)
+    np.random.seed(seed)
+    torch.manual_seed(seed)
+    torch.cuda.manual_seed(seed)
+    torch.cuda.manual_seed_all(seed) # 针对多GPU
+    torch.backends.cudnn.deterministic = True
+    torch.backends.cudnn.benchmark = False
+
+set_seed(42)
 
 # ==========================================
 # 1. 按照任务书与现有文件配置参数
